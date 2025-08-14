@@ -1,0 +1,42 @@
+{
+  "name": "claude-code-updater",
+  "version": "1.0.0",
+  "description": "Auto-updater wrapper for Claude CLI that checks for updates before execution",
+  "main": "bin/claude-code-updater.js",
+  "bin": {
+    "claude-code-updater": "./bin/claude-code-updater.js",
+    "claude": "./bin/claude-code-updater.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node scripts/install.js",
+    "preuninstall": "node scripts/uninstall.js"
+  },
+  "keywords": [
+    "claude",
+    "cli",
+    "auto-update",
+    "wrapper",
+    "anthropic",
+    "ai"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "preferGlobal": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "semver": "^7.5.4",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/claude-code-updater.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/claude-code-updater/issues"
+  },
+  "homepage": "https://github.com/yourusername/claude-code-updater#readme"
+}
