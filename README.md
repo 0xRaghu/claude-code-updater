@@ -1,14 +1,14 @@
 # Claude Code Updater
 
-A command-line tool that automatically manages and updates Claude CLI installations with wrapper functionality.
+A command-line tool that automatically manages and updates Claude Code installations with wrapper functionality.
 
 ## Overview
 
-Claude Code Updater solves the problem of manual Claude CLI updates by automatically checking for and installing updates before each execution. It provides seamless auto-update functionality with cross-platform support and shell integration.
+Claude Code Updater solves the problem of manual Claude Code updates by automatically checking for and installing updates before each execution. It provides seamless auto-update functionality with cross-platform support and shell integration.
 
 ## Features
 
-- ✅ **Auto-update Claude CLI** on each execution
+- ✅ **Auto-update Claude Code** on each execution
 - ✅ **Cross-platform support** (macOS, Linux, Windows)
 - ✅ **Automatic shell alias configuration** (bash, zsh, fish, PowerShell)
 - ✅ **Smart update caching** to avoid delays (1-hour cooldown)
@@ -33,7 +33,7 @@ The installation will automatically:
 ### Manual Installation
 
 ```bash
-git clone https://github.com/yourusername/claude-code-updater.git
+git clone https://github.com/0xRaghu/claude-code-updater.git
 cd claude-code-updater
 npm install
 npm link
@@ -44,23 +44,23 @@ npm link
 After installation, simply use `claude` as you normally would:
 
 ```bash
-# Auto-updates and runs Claude CLI
+# Auto-updates and runs Claude Code
 claude
 
 # Pass any arguments to Claude
-claude --help
-claude "Hello, world!"
+claude --resume
+claude -p "Hello, world!"
 
 # Skip update check for faster startup
-claude --skip-update "Quick command"
+claude --skip-update
 ```
 
 ## How It Works
 
-1. **Update Check**: When you run `claude`, it first checks for Claude CLI updates
+1. **Update Check**: When you run `claude`, it first checks for Claude Code updates
 2. **Smart Caching**: Updates are checked at most once per hour to avoid delays
 3. **Auto-Update**: If an update is available, it's installed automatically
-4. **Execution**: Your original command is passed through to the actual Claude CLI
+4. **Execution**: Your original command is passed through to the actual Claude Code
 
 ## Configuration
 
@@ -110,7 +110,7 @@ function claude { & claude-code-updater $args }
 
 ### Main Command
 ```bash
-claude [arguments]  # Auto-update and run Claude CLI
+claude [arguments]  # Auto-update and run Claude Code
 ```
 
 ### Utility Commands
@@ -149,10 +149,10 @@ CLAUDE_UPDATER_DEBUG=true claude --force-update
 
 **1. Claude not found after installation**
 ```bash
-# Check if Claude CLI is installed
+# Check if Claude Code is installed
 claude --version
 
-# Install Claude CLI if missing
+# Install Claude Code if missing
 npm install -g @anthropic-ai/claude-code
 ```
 
@@ -216,7 +216,7 @@ npm uninstall -g claude-code-updater
 
 ### Setup Development Environment
 ```bash
-git clone https://github.com/yourusername/claude-code-updater.git
+git clone https://github.com/0xRaghu/claude-code-updater.git
 cd claude-code-updater
 npm install
 npm link
@@ -252,15 +252,15 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/claude-code-updater/issues)
-- **Documentation**: [GitHub Wiki](https://github.com/yourusername/claude-code-updater/wiki)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/claude-code-updater/discussions)
+- **Issues**: [GitHub Issues](https://github.com/0xRaghu/claude-code-updater/issues)
+- **Documentation**: [GitHub Wiki](https://github.com/0xRaghu/claude-code-updater/wiki)
+- **Discussions**: [GitHub Discussions](https://github.com/0xRaghu/claude-code-updater/discussions)
 
 ## Related Projects
 
-- [Claude CLI](https://github.com/anthropics/claude-code) - The official Claude CLI
+- [Claude Code](https://github.com/anthropics/claude-code) - The official Claude Code
 - [npm-check-updates](https://github.com/raineorshine/npm-check-updates) - Update package dependencies
 
 ---
 
-**Note**: This tool is an unofficial wrapper for the Claude CLI and is not affiliated with Anthropic.
+**Note**: This tool is an unofficial wrapper for the Claude Code and is not affiliated with Anthropic.

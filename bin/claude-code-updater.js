@@ -37,11 +37,11 @@ class ClaudeUpdaterCLI {
       const needsUpdate = await this.updater.checkForUpdate();
       
       if (needsUpdate) {
-        spinner.text = 'Updating Claude CLI...';
+        spinner.text = 'Updating Claude Code...';
         await this.updater.performUpdate();
-        spinner.succeed(chalk.green('Claude CLI updated successfully!'));
+        spinner.succeed(chalk.green('Claude Code updated successfully!'));
       } else {
-        spinner.succeed(chalk.blue('Claude CLI is up to date'));
+        spinner.succeed(chalk.blue('Claude Code is up to date'));
       }
     } catch (error) {
       spinner.fail(chalk.yellow('Update check failed, proceeding with current version'));
@@ -59,8 +59,8 @@ class ClaudeUpdaterCLI {
 
       claude.on('error', (error) => {
         if (error.code === 'ENOENT') {
-          this.logger.error('Claude CLI not found. Please install it first with: npm i -g @anthropic-ai/claude-code');
-          reject(new Error('Claude CLI not installed'));
+          this.logger.error('Claude Code not found. Please install it first with: npm i -g @anthropic-ai/claude-code');
+          reject(new Error('Claude Code not installed'));
         } else {
           reject(error);
         }

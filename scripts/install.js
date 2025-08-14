@@ -29,7 +29,7 @@ class Installer {
 
       console.log(chalk.green('\n🎉 Installation completed successfully!'));
       console.log(chalk.cyan('\nUsage:'));
-      console.log(chalk.white('  claude [arguments]  # Will auto-update and run Claude CLI'));
+      console.log(chalk.white('  claude [arguments]  # Will auto-update and run Claude Code'));
       console.log(chalk.white('  claude --skip-update [arguments]  # Skip update check'));
       
       console.log(chalk.cyan('\nConfiguration:'));
