@@ -51,10 +51,32 @@ class ClaudeUpdaterCLI {
 
   async launchClaude(args) {
     return new Promise((resolve, reject) => {
-      // Try to find claude in the system PATH
-      const claude = spawn('claude', args, {
+      // Find the actual @anthropic-ai/claude-code package and call it directly
+      const path = require('path');
+      let claudePath;
+      
+      try {
+        // Use Node.js module resolution with global paths to find the package
+        const { execSync } = require('child_process');
+        const globalNodeModules = execSync('npm root -g', { encoding: 'utf8' }).trim();
+        const claudePackagePath = path.join(globalNodeModules, '@anthropic-ai', 'claude-code');
+        const packageJsonPath = path.join(claudePackagePath, 'package.json');
+        
+        if (!require('fs').existsSync(packageJsonPath)) {
+          throw new Error('Package not found in global modules');
+        }
+        
+        const packageJson = require(packageJsonPath);
+        claudePath = path.join(claudePackagePath, packageJson.bin.claude);
+      } catch (error) {
+        this.logger.error('Could not find @anthropic-ai/claude-code package. Please install it first with: npm i -g @anthropic-ai/claude-code');
+        reject(new Error('Claude Code not found'));
+        return;
+      }
+
+      const claude = spawn('node', [claudePath, ...args], {
         stdio: 'inherit',
-        shell: true
+        shell: false
       });
 
       claude.on('error', (error) => {

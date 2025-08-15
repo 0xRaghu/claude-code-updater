@@ -1,6 +1,6 @@
 {
   "name": "claude-code-updater",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Auto-updater wrapper for Claude Code that checks for updates before execution",
   "main": "bin/claude-code-updater.js",
   "bin": {

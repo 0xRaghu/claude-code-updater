@@ -200,16 +200,59 @@ alias claude='claude-code-updater'
 
 ## Uninstallation
 
-### Standard Uninstall (Preserves User Data)
+### Method 1: Standard Uninstall (Recommended)
 ```bash
 npm uninstall -g claude-code-updater
 ```
+This automatically removes:
+- ✅ The npm package
+- ✅ Shell aliases 
+- ✅ Binary files
+- ⚠️ Preserves user data (`~/.claude-code-updater/`)
 
-### Complete Removal
+### Method 2: Complete Cleanup (If Standard Fails)
+If the standard uninstall doesn't work completely, use our cleanup script:
+
 ```bash
-# Remove package and all user data
-npx claude-code-updater-uninstall --clean
-npm uninstall -g claude-code-updater
+# Download and run the cleanup script
+curl -L https://raw.githubusercontent.com/0xRaghu/claude-code-updater/main/scripts/cleanup.js -o cleanup.js
+node cleanup.js --clean
+
+# Or if you have the package locally
+npx claude-code-updater --cleanup --clean
+```
+
+### Method 3: Manual Cleanup
+If both methods fail, manual cleanup:
+
+```bash
+# 1. Force remove npm package
+npm uninstall -g claude-code-updater --force
+
+# 2. Remove binary files
+rm -f ~/.nvm/versions/node/*/bin/claude
+rm -f ~/.nvm/versions/node/*/bin/claude-code-updater
+sudo rm -f /usr/local/bin/claude
+sudo rm -f /usr/local/bin/claude-code-updater
+
+# 3. Remove shell aliases
+# Edit ~/.bashrc, ~/.bash_profile, ~/.zshrc
+# Remove lines containing "claude-code-updater" or "alias claude="
+
+# 4. Remove user data (optional)
+rm -rf ~/.claude-code-updater
+
+# 5. Restart terminal
+```
+
+### Verification
+After uninstallation, verify removal:
+```bash
+# Should show "command not found"
+claude --version
+
+# Should not list the package
+npm list -g claude-code-updater
 ```
 
 ## Development
